@@ -222,7 +222,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>CE FLIX.png</pixmap>
+     <pixmap>CE FLIX_whit.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

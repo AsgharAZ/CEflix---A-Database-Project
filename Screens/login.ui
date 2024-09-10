@@ -140,7 +140,7 @@ font: 75 8pt &quot;MS Shell Dlg 2&quot;;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>CE FLIX.png</pixmap>
+     <pixmap>CE FLIX_whit.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
