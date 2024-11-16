@@ -1,36 +1,39 @@
 from PyQt6.QtWidgets import QMainWindow, QMessageBox
 from PyQt6 import uic
-from database import authenticate_user, authenticate_admin
+from database import authenticate_admin
 
-class UI(QMainWindow):
+class LoginScreen(QMainWindow):
     def __init__(self):
-        super(UI, self).__init__()
-        uic.loadUi('login.ui', self)
-        self.loginButton.clicked.connect(self.login)
+        super(LoginScreen, self).__init__()
+        uic.loadUi('screens_final/login.ui', self)
+
+        # Connect the login button
+        self.pushButton.clicked.connect(self.login)
 
     def login(self):
-        username = self.usernameLineEdit.text()
-        password = self.passwordLineEdit.text()
+        """
+        Handle user/admin login.
+        """
+        username = self.lineEdit.text()
+        password = self.lineEdit_2.text()
 
         if username.endswith(".admin"):
-            if authenticate_admin(username, password):
-                self.open_admin_screen()
+            admin_id = authenticate_admin(username, password)
+            if admin_id:
+                self.open_admin_main_screen(admin_id)
             else:
                 QMessageBox.warning(self, "Login Failed", "Invalid admin username or password.")
         else:
-            if authenticate_user(username, password):
-                self.open_user_screen()
-            else:
-                QMessageBox.warning(self, "Login Failed", "Invalid user username or password.")
+            # Logic for user login (if applicable)
+            pass
 
-    def open_admin_screen(self):
-        from ui_admin import AdminScreen
-        self.admin_screen = AdminScreen()
-        self.admin_screen.show()
-        self.close()
+    def open_admin_main_screen(self, admin_id):
+        """
+        Opens the Admin_Main_Screen for the logged-in admin.
 
-    def open_user_screen(self):
-        from ui_user import UserScreen
-        self.user_screen = UserScreen()
-        self.user_screen.show()
+        :param admin_id: The ID of the logged-in admin.
+        """
+        from ui_admin_main import AdminMainScreen
+        self.admin_main_screen = AdminMainScreen(admin_id)
+        self.admin_main_screen.show()
         self.close()

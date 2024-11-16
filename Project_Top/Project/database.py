@@ -45,16 +45,69 @@ def register_admin(username, email, password):
     connection.close()
 
 def add_movie(movie_name, genre, summary, year, duration, crew, admin_id):
+    # Establish database connection
     connection = connect_db()
     cursor = connection.cursor()
-    cursor.execute("SELECT MAX(Movie_ID) FROM Movies")
-    movie_id = cursor.fetchone()[0] + 1 if cursor.fetchone()[0] else 1
 
+    # Insert the movie details into the Movie table
     cursor.execute("""
-    INSERT INTO Movies (Movie_ID, Movie_Name, Summary, Year, Duration, Crew, Admin_ID)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
-    """, (movie_id, movie_name, summary, year, duration, crew, admin_id))
+    INSERT INTO Movie (Movie_Name, Summary, Year, Admin_ID, Duration)
+    VALUES (?, ?, ?, ?, ?)
+    """, (movie_name, summary, year, admin_id, duration))
 
+    # Commit the transaction for Movie table insertion
     connection.commit()
+    print("Movie insertion committed")
+
+    # Retrieve the Movie_ID using Movie_Name (and other attributes)
+    cursor.execute("""
+    SELECT Movie_ID FROM Movie
+    WHERE Movie_Name = ? AND Summary = ? AND Year = ? AND Duration = ?
+    """, (movie_name, summary, year, duration))
+
+    # Fetch the Movie_ID
+    result = cursor.fetchone()
+
+    if result is None:
+        print("Error: Movie_ID could not be retrieved.")
+        connection.close()
+        return
+
+    movie_id = result[0]
+    print(f"Retrieved Movie_ID: {movie_id}")
+
+    # Set IDENTITY_INSERT to ON for the Genre table
+    cursor.execute("SET IDENTITY_INSERT Genre ON")
+    
+    # Split and insert genre data into Genre table
+    genre_list = [g.strip() for g in genre.split(",")]  # Split genres by comma and trim whitespace
+    for g in genre_list:
+        cursor.execute("""
+        INSERT INTO Genre (Movie_ID, Genre)
+        VALUES (?, ?)
+        """, (movie_id, g))
+
+    # Set IDENTITY_INSERT to OFF for the Genre table
+    cursor.execute("SET IDENTITY_INSERT Genre OFF")
+
+    # Set IDENTITY_INSERT to ON for the Crew table
+    cursor.execute("SET IDENTITY_INSERT Crew ON")
+    
+    # Split and insert crew data into Crew table
+    crew_list = [c.strip() for c in crew.split(",")]  # Split crew members by comma and trim whitespace
+    for c in crew_list:
+        cursor.execute("""
+        INSERT INTO Crew (Movie_ID, Cast)
+        VALUES (?, ?)
+        """, (movie_id, c))
+
+    # Set IDENTITY_INSERT to OFF for the Crew table
+    cursor.execute("SET IDENTITY_INSERT Crew OFF")
+
+    # Commit all transactions
+    connection.commit()
+    print("All data committed")
+
+    # Close the cursor and connection
     cursor.close()
     connection.close()

@@ -58,7 +58,8 @@ CREATE TABLE [Genre] (
 );
 
 
-
+ALTER TABLE Movie
+ADD Duration nvarchar(255) NOT NULL DEFAULT 0;
 
 ALTER TABLE [Movie] ADD CONSTRAINT [Movie_fk4] FOREIGN KEY ([Admin_ID]) REFERENCES [Admin]([Admin_ID]);
 ALTER TABLE [Review] ADD CONSTRAINT [Review_fk5] FOREIGN KEY ([User_ID]) REFERENCES [User]([User_ID]);
@@ -145,6 +146,18 @@ SET IDENTITY_INSERT [Genre] OFF;
 
 --ALTER TABLE [Crew]
 --ADD PRIMARY KEY ([Movie_ID], [Cast]);
+
+UPDATE Movie
+SET Duration = '2 hours 28 minutes'
+WHERE Movie_Name = 'Inception';
+
+UPDATE Movie
+SET Duration = '2 hours 16 minutes'
+WHERE Movie_Name = 'The Matrix';
+
+UPDATE Movie
+SET Duration = '2 hours 49 minutes'
+WHERE Movie_Name = 'Interstellar';
 
 
 Commit;

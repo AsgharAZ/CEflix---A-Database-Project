@@ -5,7 +5,7 @@ from database import register_user, register_admin
 class RegisterScreen(QMainWindow):
     def __init__(self):
         super(RegisterScreen, self).__init__()
-        uic.loadUi('register.ui', self)
+        uic.loadUi('screens_final/register.ui', self)
         self.registerButton.clicked.connect(self.register_user)
 
     def register_user(self):
