@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QMainWindow, QMessageBox
 from PyQt6 import uic
 from database import authenticate_admin
+from database import authenticate_user
 
 class LoginScreen(QMainWindow):
     def __init__(self):
@@ -9,6 +10,9 @@ class LoginScreen(QMainWindow):
 
         # Connect the login button
         self.pushButton.clicked.connect(self.login)
+
+        # Connect the sign-up button
+        self.pushButton_2.clicked.connect(self.open_register_screen)  # Add this line
 
     def login(self):
         """
@@ -36,4 +40,13 @@ class LoginScreen(QMainWindow):
         from ui_admin_main import AdminMainScreen
         self.admin_main_screen = AdminMainScreen(admin_id)
         self.admin_main_screen.show()
+        self.close()
+
+    def open_register_screen(self):
+        """
+        Opens the RegisterScreen for user/admin registration.
+        """
+        from ui_register import RegisterScreen  # Delayed import to avoid circular dependency
+        self.register_screen = RegisterScreen()
+        self.register_screen.show()
         self.close()
