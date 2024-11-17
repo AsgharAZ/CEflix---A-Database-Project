@@ -14,7 +14,26 @@
    <string>Movie Details</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="MovieTitle">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>40</y>
+      <width>251</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>facade.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -30,13 +49,13 @@
      <enum>QFrame::Plain</enum>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;FACADE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="Year">
+   <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>530</x>
       <y>90</y>
       <width>61</width>
       <height>31</height>
@@ -49,15 +68,15 @@
      <enum>QFrame::Plain</enum>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;2021&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="Duration">
+   <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>600</x>
       <y>90</y>
-      <width>131</width>
+      <width>91</width>
       <height>31</height>
      </rect>
     </property>
@@ -68,7 +87,7 @@
      <enum>QFrame::Plain</enum>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;139 mins&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox">
@@ -83,7 +102,7 @@
     <property name="title">
      <string>Summary</string>
     </property>
-    <widget class="QTextBrowser" name="Summary">
+    <widget class="QTextBrowser" name="textBrowser">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -97,7 +116,7 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Reze is a teenage girl living with a Spider Devil named Pochita. Due to the debt her father left behind, she has been living a rock-bottom life while repaying his debt by harvesting devil corpses with Pochita.&lt;br /&gt;&lt;br /&gt;One day, Reze is betrayed and killed. As her consciousness fades, she makes a contract with Pochita and gets revived as a &amp;quot;Widowmaker&amp;quot; — a woman with a devil's heart.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </widget>
@@ -105,9 +124,9 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>420</y>
+      <y>400</y>
       <width>391</width>
-      <height>91</height>
+      <height>171</height>
      </rect>
     </property>
     <property name="title">
@@ -116,37 +135,64 @@ p, li { white-space: pre-wrap; }
     <widget class="QLineEdit" name="lineEdit">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>371</width>
+       <x>20</x>
+       <y>130</y>
+       <width>351</width>
        <height>22</height>
       </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="Addreview">
+    <widget class="QScrollArea" name="scrollArea">
      <property name="geometry">
       <rect>
-       <x>262</x>
-       <y>50</y>
-       <width>121</width>
-       <height>28</height>
+       <x>10</x>
+       <y>26</y>
+       <width>371</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>369</width>
+        <height>69</height>
+       </rect>
+      </property>
+      <widget class="QTextEdit" name="textEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>351</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;A great adaptation of a chaotically amazing story, even if some things inevitably get lost in transition.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>110</y>
+       <width>101</width>
+       <height>16</height>
       </rect>
      </property>
      <property name="text">
       <string>Add your review!</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="OtherReviews">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>50</y>
-       <width>93</width>
-       <height>28</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Other Reviews</string>
      </property>
     </widget>
    </widget>
@@ -165,7 +211,7 @@ p, li { white-space: pre-wrap; }
     <property name="checkable">
      <bool>false</bool>
     </property>
-    <widget class="QCheckBox" name="Watched">
+    <widget class="QCheckBox" name="checkBox">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -173,12 +219,12 @@ p, li { white-space: pre-wrap; }
       <rect>
        <x>20</x>
        <y>70</y>
-       <width>111</width>
+       <width>131</width>
        <height>20</height>
       </rect>
      </property>
      <property name="text">
-      <string>Watched</string>
+      <string>Watch</string>
      </property>
      <property name="icon">
       <iconset>
@@ -195,7 +241,7 @@ p, li { white-space: pre-wrap; }
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QSpinBox" name="Rate">
+    <widget class="QSpinBox" name="spinBox">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -208,7 +254,7 @@ p, li { white-space: pre-wrap; }
       <number>10</number>
      </property>
     </widget>
-    <widget class="QCheckBox" name="Watchlist">
+    <widget class="QCheckBox" name="checkBox_2">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -221,7 +267,7 @@ p, li { white-space: pre-wrap; }
       <string>Watchlist</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="Favourite">
+    <widget class="QCheckBox" name="checkBox_5">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -232,19 +278,6 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="text">
       <string>Favourite</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="Update">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>160</y>
-       <width>121</width>
-       <height>28</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Update</string>
      </property>
     </widget>
    </widget>
@@ -260,7 +293,7 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Cast</string>
     </property>
-    <widget class="QTextBrowser" name="Cast">
+    <widget class="QTextBrowser" name="textBrowser_4">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -274,6 +307,7 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tatsuki Fujimoto&lt;br /&gt;Ryuu Nakamura&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
@@ -290,7 +324,7 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Genres</string>
     </property>
-    <widget class="QTextBrowser" name="Genres">
+    <widget class="QTextBrowser" name="textBrowser_2">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -304,22 +338,12 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Action&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Drama&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Horror &lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Supernatural&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QLabel" name="Poster">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>50</y>
-      <width>231</width>
-      <height>361</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

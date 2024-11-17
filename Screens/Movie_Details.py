@@ -12,7 +12,7 @@ class Movie_Details(QtWidgets.QMainWindow):
         
         super(Movie_Details, self).__init__()
         # Load the .ui file
-        uic.loadUi('Movie_Details.ui', self)
+        uic.loadUi('screens_final/Movie_Details.ui', self)
         
         # # Set up the QGraphicsScene
         # print('hello world')
