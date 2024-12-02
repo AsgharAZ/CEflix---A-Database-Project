@@ -23,7 +23,7 @@ class review(QtWidgets.QMainWindow):
         # Load the .ui file
         uic.loadUi('screens_final/reviews.ui', self)
         
-                # Step 1: Prompt for Movie_ID and User_ID
+        # Step 1: Prompt for Movie_ID and User_ID
         movie_id, ok1 = QtWidgets.QInputDialog.getInt(self, "Input Movie_ID", "Enter Movie_ID:")
         if not ok1:
             return  # Exit if user cancels the input
@@ -56,8 +56,9 @@ class review(QtWidgets.QMainWindow):
             query = f"""
             SELECT Review_ID, Rating, Review_Description, Num_Of_Likes, Date
             FROM Review
-            WHERE User_ID = {user_id} AND Movie_ID = {movie_id}
+            WHERE Movie_ID = {movie_id}
             """
+            # WHERE User_ID = {user_id} AND Movie_ID = {movie_id}
             cursor.execute(query)
             reviews = cursor.fetchall()
 

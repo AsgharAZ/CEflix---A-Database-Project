@@ -13,7 +13,7 @@ database = 'DESKTOP-JBCSQ90\\MYSQLSERVER'  # Name of your Northwind database
 use_windows_authentication = True  # Set to True to use Windows Authentication
 
 # Create the connection string based on the authentication method chosen
-connection_string = f'DRIVER={{SQL Server}};SERVER={server};DATABASE={database};Trusted_Connection=yes;'
+connection_string = f'DRIVER={{SQL Server}};SERVER={server};DATABASE={database};Trusted_Connection=yes;'\
 
 class Movie_Details(QtWidgets.QMainWindow):
     def __init__(self):
@@ -23,14 +23,15 @@ class Movie_Details(QtWidgets.QMainWindow):
         # Load the .ui file
         uic.loadUi('screens_final/Movie_Details.ui', self)
         
+        user_id, ok2 = QtWidgets.QInputDialog.getInt(self, "Input User_ID", "Enter User_ID:")
+        if not ok2:
+            return  # Exit if user cancels the input
+        
                 # Step 1: Prompt for Movie_ID and User_ID
         movie_id, ok1 = QtWidgets.QInputDialog.getInt(self, "Input Movie_ID", "Enter Movie_ID:")
         if not ok1:
             return  # Exit if user cancels the input
     
-        user_id, ok2 = QtWidgets.QInputDialog.getInt(self, "Input User_ID", "Enter User_ID:")
-        if not ok2:
-            return  # Exit if user cancels the input
         
         # Store movie_id and user_id as instance variables
         self.movie_id = movie_id
